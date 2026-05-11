@@ -5,6 +5,69 @@ import Image from "next/image";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 import Button from "@/components/ui/Button";
 
+const tools = [
+  {
+    id: "ae",
+    label: "Ae",
+    color: "#9999FF",
+    bg: "rgba(12,12,60,0.82)",
+    glow: "rgba(153,153,255,0.3)",
+    pos: { top: "12%", right: "26%" },
+    delay: 0,
+    amp: 10,
+  },
+  {
+    id: "pr",
+    label: "Pr",
+    color: "#EA77FF",
+    bg: "rgba(28,8,55,0.82)",
+    glow: "rgba(234,119,255,0.3)",
+    pos: { top: "8%", right: "4%" },
+    delay: 0.25,
+    amp: 8,
+  },
+  {
+    id: "ps",
+    label: "Ps",
+    color: "#31A8FF",
+    bg: "rgba(0,14,40,0.82)",
+    glow: "rgba(49,168,255,0.3)",
+    pos: { top: "54%", left: "2%" },
+    delay: 0.5,
+    amp: 12,
+  },
+  {
+    id: "ai",
+    label: "Ai",
+    color: "#FF9A00",
+    bg: "rgba(24,8,0,0.82)",
+    glow: "rgba(255,154,0,0.3)",
+    pos: { top: "48%", right: "3%" },
+    delay: 0.75,
+    amp: 9,
+  },
+  {
+    id: "figma",
+    label: "Fg",
+    color: "#F24E1E",
+    bg: "rgba(24,10,5,0.82)",
+    glow: "rgba(242,78,30,0.3)",
+    pos: { bottom: "20%", right: "5%" },
+    delay: 1.0,
+    amp: 11,
+  },
+  {
+    id: "claude",
+    label: "✦",
+    color: "#E07A2F",
+    bg: "rgba(24,10,0,0.82)",
+    glow: "rgba(224,122,47,0.3)",
+    pos: { bottom: "24%", left: "4%" },
+    delay: 0.6,
+    amp: 8,
+  },
+];
+
 export default function Hero() {
   return (
     <section
@@ -22,7 +85,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Large portrait — right side, full height */}
+      {/* Portrait + floating badges */}
       <motion.div
         initial={{ opacity: 0, x: 80 }}
         animate={{ opacity: 1, x: 0 }}
@@ -39,13 +102,14 @@ export default function Hero() {
               "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(224,122,47,0.18) 0%, transparent 70%)",
           }}
         />
-        {/* Left-edge fade so figure bleeds into dark bg */}
+        {/* Left-edge fade */}
         <div
           className="absolute inset-y-0 left-0 w-48 z-10"
           style={{
             background: "linear-gradient(to right, #0B1218 0%, transparent 100%)",
           }}
         />
+
         <Image
           src="/assets/jaycie.png"
           alt="Jaycie"
@@ -53,6 +117,58 @@ export default function Hero() {
           className="object-contain object-center"
           priority
         />
+
+        {/* Floating tool badges */}
+        {tools.map((tool) => (
+          <motion.div
+            key={tool.id}
+            initial={{ opacity: 0, scale: 0.4, rotate: -8 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{
+              delay: 0.9 + tool.delay,
+              duration: 0.5,
+              type: "spring",
+              stiffness: 200,
+              damping: 14,
+            }}
+            style={{ position: "absolute", ...tool.pos, zIndex: 20 }}
+          >
+            <motion.div
+              animate={{ y: [0, -tool.amp, 0] }}
+              transition={{
+                duration: 2.8 + tool.delay * 0.4,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: tool.delay * 0.3,
+              }}
+              style={{
+                width: 66,
+                height: 66,
+                background: tool.bg,
+                border: `1px solid ${tool.glow}`,
+                borderRadius: 18,
+                backdropFilter: "blur(10px)",
+                boxShadow: `0 8px 28px rgba(0,0,0,0.5), 0 0 18px ${tool.glow}`,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <span
+                style={{
+                  color: tool.color,
+                  fontWeight: 800,
+                  fontSize: tool.id === "claude" ? 26 : 22,
+                  fontFamily: "system-ui, sans-serif",
+                  letterSpacing: -0.5,
+                  textShadow: `0 0 12px ${tool.glow}`,
+                }}
+              >
+                {tool.label}
+              </span>
+            </motion.div>
+          </motion.div>
+        ))}
       </motion.div>
 
       {/* Text — left column */}
