@@ -7,24 +7,24 @@ import Button from "@/components/ui/Button";
 
 const tools = [
   {
-    id: "ae",
-    label: "Ae",
-    color: "#9999FF",
-    bg: "rgba(12,12,60,0.82)",
-    glow: "rgba(153,153,255,0.3)",
-    pos: { top: "12%", right: "20%" },
-    delay: 0,
-    amp: 10,
-  },
-  {
     id: "pr",
     label: "Pr",
     color: "#EA77FF",
     bg: "rgba(28,8,55,0.82)",
     glow: "rgba(234,119,255,0.3)",
-    pos: { top: "9%", left: "18%" },
-    delay: 0.25,
+    pos: { top: "10%", left: "31%" },
+    delay: 0,
     amp: 8,
+  },
+  {
+    id: "ae",
+    label: "Ae",
+    color: "#9999FF",
+    bg: "rgba(12,12,60,0.82)",
+    glow: "rgba(153,153,255,0.3)",
+    pos: { top: "13%", right: "22%" },
+    delay: 0.2,
+    amp: 10,
   },
   {
     id: "ps",
@@ -32,8 +32,8 @@ const tools = [
     color: "#31A8FF",
     bg: "rgba(0,14,40,0.82)",
     glow: "rgba(49,168,255,0.3)",
-    pos: { top: "52%", left: "12%" },
-    delay: 0.5,
+    pos: { top: "52%", left: "22%" },
+    delay: 0.4,
     amp: 12,
   },
   {
@@ -42,19 +42,9 @@ const tools = [
     color: "#FF9A00",
     bg: "rgba(24,8,0,0.82)",
     glow: "rgba(255,154,0,0.3)",
-    pos: { top: "46%", right: "14%" },
-    delay: 0.75,
+    pos: { top: "47%", right: "20%" },
+    delay: 0.6,
     amp: 9,
-  },
-  {
-    id: "figma",
-    label: "Fg",
-    color: "#F24E1E",
-    bg: "rgba(24,10,5,0.82)",
-    glow: "rgba(242,78,30,0.3)",
-    pos: { bottom: "22%", right: "16%" },
-    delay: 1.0,
-    amp: 11,
   },
   {
     id: "claude",
@@ -62,9 +52,19 @@ const tools = [
     color: "#E07A2F",
     bg: "rgba(24,10,0,0.82)",
     glow: "rgba(224,122,47,0.3)",
-    pos: { bottom: "26%", left: "14%" },
-    delay: 0.6,
+    pos: { bottom: "26%", left: "29%" },
+    delay: 0.8,
     amp: 8,
+  },
+  {
+    id: "figma",
+    label: "Fg",
+    color: "#F24E1E",
+    bg: "rgba(24,10,5,0.82)",
+    glow: "rgba(242,78,30,0.3)",
+    pos: { bottom: "22%", right: "23%" },
+    delay: 1.0,
+    amp: 11,
   },
 ];
 
@@ -75,7 +75,7 @@ export default function Hero() {
       className="relative min-h-screen flex items-center overflow-hidden"
       aria-label="Hero"
     >
-      {/* Ambient glow — left side behind photo */}
+      {/* Ambient glow behind photo */}
       <div
         className="pointer-events-none absolute inset-0"
         aria-hidden="true"
@@ -94,19 +94,15 @@ export default function Hero() {
         style={{ width: "48%" }}
         aria-hidden="true"
       >
-        {/* Right-edge fade to blend into dark bg */}
+        {/* Right-edge fade */}
         <div
           className="absolute inset-y-0 right-0 w-52 z-10"
-          style={{
-            background: "linear-gradient(to left, #0B1218 0%, transparent 100%)",
-          }}
+          style={{ background: "linear-gradient(to left, #0B1218 0%, transparent 100%)" }}
         />
         {/* Bottom fade */}
         <div
           className="absolute bottom-0 left-0 right-0 h-32 z-10"
-          style={{
-            background: "linear-gradient(to top, #0B1218 0%, transparent 100%)",
-          }}
+          style={{ background: "linear-gradient(to top, #0B1218 0%, transparent 100%)" }}
         />
 
         <Image
@@ -117,7 +113,7 @@ export default function Hero() {
           priority
         />
 
-        {/* Floating tool badges */}
+        {/* Floating tool badges — clustered around the figure */}
         {tools.map((tool) => (
           <motion.div
             key={tool.id}
@@ -173,15 +169,14 @@ export default function Hero() {
       {/* Text — right side */}
       <div className="relative z-10 w-full max-w-layout mx-auto px-6 pt-32 pb-20">
         <div className="flex">
-          {/* Spacer for the photo on left */}
-          <div className="hidden lg:block w-[46%] flex-shrink-0" />
+          {/* Spacer — matches photo width + breathing room */}
+          <div className="hidden lg:block w-[50%] flex-shrink-0" />
 
-          {/* Text block */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
-            className="lg:pl-10 max-w-xl"
+            className="lg:pl-12 max-w-lg"
           >
             <motion.p variants={fadeUp} className="text-eyebrow mb-6">
               Multimedia · Design · Motion
@@ -189,12 +184,13 @@ export default function Hero() {
 
             <motion.h1
               variants={fadeUp}
-              className="text-white mb-6 font-display font-extrabold leading-[1]"
-              style={{ fontSize: "clamp(46px, 5.8vw, 80px)", letterSpacing: "-0.03em" }}
+              className="text-white mb-6 font-display font-extrabold leading-[1.05]"
+              style={{ fontSize: "clamp(36px, 4vw, 56px)", letterSpacing: "-0.03em" }}
             >
               Editing moments
               <br />
-              into experiences.
+              into{" "}
+              <span className="text-accent">experiences.</span>
             </motion.h1>
 
             <motion.p
