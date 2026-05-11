@@ -1,11 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 import Button from "@/components/ui/Button";
-import { drivePreviewUrl } from "@/lib/drive";
-
-const HERO_REEL_ID = "1q5OaWXbmaLRaIXnZxXEj6_tWCINydnTa";
 
 export default function Hero() {
   return (
@@ -72,7 +70,7 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Floating video chip */}
+          {/* Floating image chip */}
           <motion.div
             initial={{ opacity: 0, y: 30, rotate: 2 }}
             animate={{ opacity: 1, y: 0, rotate: 2 }}
@@ -88,24 +86,13 @@ export default function Hero() {
                   "0 0 0 1px rgba(224,122,47,0.20), 0 40px 80px -20px rgba(0,0,0,0.8)",
               }}
             >
-              <iframe
-                src={drivePreviewUrl(HERO_REEL_ID)}
-                allow="autoplay; encrypted-media"
-                allowFullScreen
-                referrerPolicy="no-referrer"
-                className="absolute inset-0 w-full h-full border-0"
-                title="Featured reel"
-                loading="lazy"
+              <Image
+                src="/assets/486359374_3924058317909459_2937421913585608866_n.jpg"
+                alt="Jaycie"
+                fill
+                className="object-cover"
+                priority
               />
-              {/* Pause autoplay button for a11y */}
-              <div className="absolute bottom-3 left-3 right-3 flex justify-end">
-                <span
-                  className="text-[10px] font-body text-white/50 bg-black/40 px-2 py-1 rounded-full"
-                  aria-live="polite"
-                >
-                  Reel preview
-                </span>
-              </div>
             </div>
           </motion.div>
         </div>
