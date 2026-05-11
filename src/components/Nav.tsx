@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Button from "@/components/ui/Button";
 
 const navItems = ["About", "Work", "Services", "Experience", "Contact"];
@@ -27,10 +28,19 @@ export default function Nav() {
         {/* Logo */}
         <a
           href="#"
-          className="font-display font-bold text-lg text-white tracking-tight hover:text-accent transition-colors"
+          className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           aria-label="Jaycie — home"
         >
-          Jaycie
+          <Image
+            src="/assets/logo-icon.png"
+            alt="JC logo mark"
+            width={32}
+            height={32}
+            className="object-contain"
+          />
+          <span className="font-display font-bold text-lg text-white tracking-tight">
+            Jay<span className="text-accent">Cie</span>
+          </span>
         </a>
 
         {/* Desktop nav */}
