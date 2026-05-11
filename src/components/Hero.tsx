@@ -31,12 +31,12 @@ export default function Hero() {
         style={{ width: "52%" }}
         aria-hidden="true"
       >
-        {/* Orange floor glow */}
+        {/* Orange center glow */}
         <div
-          className="absolute bottom-0 left-0 right-0 h-48"
+          className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 80% 100% at 50% 100%, rgba(224,122,47,0.22) 0%, transparent 70%)",
+              "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(224,122,47,0.18) 0%, transparent 70%)",
           }}
         />
         {/* Left-edge fade so figure bleeds into dark bg */}
@@ -50,7 +50,7 @@ export default function Hero() {
           src="/assets/jaycie.png"
           alt="Jaycie"
           fill
-          className="object-contain object-bottom"
+          className="object-contain object-center"
           priority
         />
       </motion.div>
