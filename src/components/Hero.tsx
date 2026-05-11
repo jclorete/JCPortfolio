@@ -12,7 +12,7 @@ const tools = [
     color: "#9999FF",
     bg: "rgba(12,12,60,0.82)",
     glow: "rgba(153,153,255,0.3)",
-    pos: { top: "12%", right: "8%" },
+    pos: { top: "12%", right: "20%" },
     delay: 0,
     amp: 10,
   },
@@ -22,7 +22,7 @@ const tools = [
     color: "#EA77FF",
     bg: "rgba(28,8,55,0.82)",
     glow: "rgba(234,119,255,0.3)",
-    pos: { top: "8%", left: "6%" },
+    pos: { top: "9%", left: "18%" },
     delay: 0.25,
     amp: 8,
   },
@@ -32,7 +32,7 @@ const tools = [
     color: "#31A8FF",
     bg: "rgba(0,14,40,0.82)",
     glow: "rgba(49,168,255,0.3)",
-    pos: { top: "52%", left: "2%" },
+    pos: { top: "52%", left: "12%" },
     delay: 0.5,
     amp: 12,
   },
@@ -42,7 +42,7 @@ const tools = [
     color: "#FF9A00",
     bg: "rgba(24,8,0,0.82)",
     glow: "rgba(255,154,0,0.3)",
-    pos: { top: "46%", right: "4%" },
+    pos: { top: "46%", right: "14%" },
     delay: 0.75,
     amp: 9,
   },
@@ -52,7 +52,7 @@ const tools = [
     color: "#F24E1E",
     bg: "rgba(24,10,5,0.82)",
     glow: "rgba(242,78,30,0.3)",
-    pos: { bottom: "22%", right: "5%" },
+    pos: { bottom: "22%", right: "16%" },
     delay: 1.0,
     amp: 11,
   },
@@ -62,7 +62,7 @@ const tools = [
     color: "#E07A2F",
     bg: "rgba(24,10,0,0.82)",
     glow: "rgba(224,122,47,0.3)",
-    pos: { bottom: "26%", left: "3%" },
+    pos: { bottom: "26%", left: "14%" },
     delay: 0.6,
     amp: 8,
   },
@@ -141,11 +141,11 @@ export default function Hero() {
                 delay: tool.delay * 0.3,
               }}
               style={{
-                width: 66,
-                height: 66,
+                width: 78,
+                height: 78,
                 background: tool.bg,
                 border: `1px solid ${tool.glow}`,
-                borderRadius: 18,
+                borderRadius: 20,
                 backdropFilter: "blur(10px)",
                 boxShadow: `0 8px 28px rgba(0,0,0,0.5), 0 0 18px ${tool.glow}`,
                 display: "flex",
@@ -157,7 +157,7 @@ export default function Hero() {
                 style={{
                   color: tool.color,
                   fontWeight: 800,
-                  fontSize: tool.id === "claude" ? 26 : 22,
+                  fontSize: tool.id === "claude" ? 30 : 25,
                   fontFamily: "system-ui, sans-serif",
                   letterSpacing: -0.5,
                   textShadow: `0 0 12px ${tool.glow}`,
@@ -189,9 +189,12 @@ export default function Hero() {
 
             <motion.h1
               variants={fadeUp}
-              className="text-display-xl text-white mb-6 whitespace-pre-line"
+              className="text-white mb-6 font-display font-extrabold leading-[1]"
+              style={{ fontSize: "clamp(46px, 5.8vw, 80px)", letterSpacing: "-0.03em" }}
             >
-              {"Editing moments\ninto experiences."}
+              Editing moments
+              <br />
+              into experiences.
             </motion.h1>
 
             <motion.p
