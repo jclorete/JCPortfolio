@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0b1218;
+  --surface-1: #111111;
+  --surface-2: #1a1a1a;
+  --surface-elevated: #222222;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.1);
+  --text-primary: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --text-subtle: rgba(255, 255, 255, 0.45);
+  --accent: #e07a2f;
+  --accent-glow: rgba(224, 122, 47, 0.2);
+  --accent-tint: rgba(224, 122, 47, 0.1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0b1218;
+  color: #ffffff;
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0b1218;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid #e07a2f;
+  outline-offset: 2px;
+}
+
+/* Section dividers */
+.section-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-display-xl {
+    font-size: clamp(52px, 9vw, 120px);
+    font-family: var(--font-urbanist), sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+  }
+
+  .text-display-lg {
+    font-size: clamp(36px, 5.5vw, 72px);
+    font-family: var(--font-urbanist), sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  .text-heading {
+    font-size: clamp(26px, 3.2vw, 44px);
+    font-family: var(--font-urbanist), sans-serif;
+    font-weight: 700;
+  }
+
+  .text-subhead {
+    font-size: clamp(16px, 1.5vw, 20px);
+    font-family: var(--font-inter), sans-serif;
+    font-weight: 500;
+  }
+
+  .text-eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-family: var(--font-inter), sans-serif;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .accent-glow {
+    box-shadow: 0 0 0 1px rgba(224, 122, 47, 0.3),
+      0 20px 60px -20px rgba(224, 122, 47, 0.35);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
