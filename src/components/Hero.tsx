@@ -70,30 +70,21 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Floating image chip */}
+          {/* Floating portrait cutout */}
           <motion.div
-            initial={{ opacity: 0, y: 30, rotate: 2 }}
-            animate={{ opacity: 1, y: 0, rotate: 2 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="hidden lg:flex justify-center"
+            className="hidden lg:flex justify-center items-end"
           >
-            <div
-              className="relative rounded-[22px] overflow-hidden border border-white/10"
-              style={{
-                width: "220px",
-                aspectRatio: "9/16",
-                boxShadow:
-                  "0 0 0 1px rgba(224,122,47,0.20), 0 40px 80px -20px rgba(0,0,0,0.8)",
-              }}
-            >
-              <Image
-                src="/assets/486359374_3924058317909459_2937421913585608866_n.jpg"
-                alt="Jaycie"
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
+            <Image
+              src="/assets/jaycie.png"
+              alt="Jaycie"
+              width={420}
+              height={520}
+              className="object-contain object-bottom w-auto max-h-[520px]"
+              priority
+            />
           </motion.div>
         </div>
       </div>

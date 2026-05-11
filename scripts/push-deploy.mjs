@@ -104,8 +104,15 @@ async function vercelDeploy() {
     state = s.readyState || state;
   }
 
-  if (state === 'READY') console.log(`[deploy] ✓ live → https://jclorete-portfolio.vercel.app`);
-  else console.log(`[deploy] build ended: ${state}`);
+  if (state === 'READY') {
+    // Update the production alias to point to this deployment
+    await fetch(`https://api.vercel.com/v2/deployments/${deploy.id}/aliases?teamId=${VERCEL_TEAM}`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${VERCEL_TOKEN}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ alias: 'jclorete-portfolio.vercel.app' }),
+    });
+    console.log(`[deploy] ✓ live → https://jclorete-portfolio.vercel.app`);
+  } else console.log(`[deploy] build ended: ${state}`);
 }
 
 (async () => {
