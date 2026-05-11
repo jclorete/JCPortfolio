@@ -11,6 +11,26 @@ const VIDEOS = [
     title: "Long Form Edit 01",
     category: "LONG FORM VIDEO",
   },
+  {
+    id: "1Rhvo7SkhJVG4vQnfkPiv9Pz_fY2vWiyn",
+    title: "Long Form Edit 02",
+    category: "LONG FORM VIDEO",
+  },
+  {
+    id: "1fEAGHzYqfFelNLiOydNci-SpNZKhzc7C",
+    title: "Long Form Edit 03",
+    category: "LONG FORM VIDEO",
+  },
+  {
+    id: "1gCoz0My41HwSvq51JgM6MR6nXy9US-zY",
+    title: "Long Form Edit 04",
+    category: "LONG FORM VIDEO",
+  },
+  {
+    id: "19p6m1hsm6dHsnCXWvdWsLQoRxUDOy-Lm",
+    title: "Long Form Edit 05",
+    category: "LONG FORM VIDEO",
+  },
 ];
 
 export default function LongFormVideos() {
@@ -46,12 +66,9 @@ export default function LongFormVideos() {
             </motion.span>
             <motion.h2
               variants={fadeUp}
-              className="font-display font-extrabold text-white leading-[0.92]"
-              style={{ fontSize: "clamp(52px, 7.5vw, 100px)", letterSpacing: "-0.03em" }}
+              className="text-heading text-white"
             >
-              Long Form
-              <br />
-              Videos
+              Long Form Videos
             </motion.h2>
           </div>
           <motion.p
