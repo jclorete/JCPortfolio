@@ -44,7 +44,7 @@ export default function Hero() {
             aria-hidden="true"
           >
             <Image
-              src="/assets/jaycie.png"
+              src="/assets/Untitled-3.png"
               alt="Jaycie"
               fill
               className="object-contain object-bottom"
