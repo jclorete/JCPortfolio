@@ -28,18 +28,43 @@ export default function Nav() {
         {/* Logo */}
         <a
           href="#"
-          className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+          className="flex items-center gap-3 hover:opacity-80 transition-opacity"
           aria-label="Jaycie — home"
         >
-          <Image
-            src="/assets/logo-icon.png"
-            alt="JC logo mark"
-            width={32}
-            height={32}
-            className="object-contain"
-          />
-          <span className="font-display font-bold text-lg text-white tracking-tight">
-            Jay<span className="text-accent">Cie</span>
+          {/* Circle logo with white ring */}
+          <div
+            className="relative flex-shrink-0 rounded-full flex items-center justify-center"
+            style={{
+              width: 48,
+              height: 48,
+              border: "2.5px solid white",
+              background: "rgba(224,122,47,0.08)",
+            }}
+          >
+            <div className="relative w-9 h-9">
+              <Image
+                src="/assets/logo-icon.png"
+                alt="JC logo mark"
+                fill
+                className="object-contain"
+                style={{
+                  filter:
+                    "brightness(0) invert(53%) sepia(82%) saturate(465%) hue-rotate(349deg) brightness(98%) contrast(91%)",
+                }}
+              />
+            </div>
+          </div>
+          {/* Name in Tahoma Bold */}
+          <span
+            style={{
+              fontFamily: "Tahoma, 'Trebuchet MS', Arial, sans-serif",
+              fontWeight: "bold",
+              fontSize: "19px",
+              color: "white",
+              letterSpacing: "0.01em",
+            }}
+          >
+            Jay<span style={{ color: "#E07A2F" }}>Cie</span>
           </span>
         </a>
 
