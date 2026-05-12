@@ -37,8 +37,6 @@ export default function Nav() {
             style={{
               width: 48,
               height: 48,
-              border: "2.5px solid white",
-              background: "rgba(224,122,47,0.08)",
             }}
           >
             <div className="relative w-9 h-9">
