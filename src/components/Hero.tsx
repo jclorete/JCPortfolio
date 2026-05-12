@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { fadeUp, staggerContainer } from "@/lib/motion";
@@ -8,6 +9,8 @@ import { BackgroundPaths } from "@/components/ui/background-paths";
 import { LampEffect } from "@/components/ui/lamp";
 
 export default function Hero() {
+  const [hovered, setHovered] = useState(false);
+
   return (
     <section
       id="hero"
@@ -32,37 +35,56 @@ export default function Hero() {
 
       {/* Centered 2-column layout */}
       <div className="relative z-10 w-full max-w-layout mx-auto px-8 pt-24 pb-16">
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-10 items-center">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-10 items-center pt-8 lg:pt-0">
 
           {/* Left — Photo */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-            className="relative hidden lg:block pointer-events-none select-none"
-            style={{ height: "78vh", maxHeight: "680px" }}
+            className="relative order-last lg:order-first select-none cursor-pointer"
+            style={{
+              height: "clamp(320px, 60vw, 680px)",
+              maskImage: "linear-gradient(to right, transparent 0%, black 12%, black 72%, transparent 100%), linear-gradient(to top, transparent 0%, black 22%, black 100%)",
+              maskComposite: "intersect",
+              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 12%, black 72%, transparent 100%), linear-gradient(to top, transparent 0%, black 22%, black 100%)",
+              WebkitMaskComposite: "source-in",
+            }}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            onTouchStart={() => setHovered(true)}
+            onTouchEnd={() => setHovered(false)}
             aria-hidden="true"
           >
+            {/* Default photo */}
             <Image
               src="/assets/Untitled-3.png"
               alt="Jaycie"
               fill
               className="object-contain object-bottom"
+              style={{
+                opacity: hovered ? 0 : 1,
+                transform: hovered ? "scale(1.035) translateY(-8px)" : "scale(1) translateY(0px)",
+                filter: hovered ? "blur(5px)" : "blur(0px)",
+                willChange: "opacity, transform, filter",
+                transition: "opacity 0.85s cubic-bezier(0.76,0,0.24,1), transform 0.85s cubic-bezier(0.76,0,0.24,1), filter 0.45s cubic-bezier(0.76,0,0.24,1)",
+              }}
               priority
             />
-            {/* Right-edge fade */}
-            <div
-              className="absolute inset-y-0 right-0 w-24 z-10"
-              style={{ background: "linear-gradient(to left, #0B1218 0%, transparent 100%)" }}
-            />
-            {/* Bottom fade */}
-            <div
-              className="absolute bottom-0 left-0 right-0 z-10"
+            {/* Hover photo — same canvas size, preloaded */}
+            <Image
+              src="/assets/photo2-sized.png"
+              alt="Jaycie"
+              fill
+              className="object-contain object-bottom"
               style={{
-                height: "40%",
-                background:
-                  "linear-gradient(to top, #0B1218 0%, #0B1218 15%, rgba(11,18,24,0.85) 35%, rgba(11,18,24,0.5) 55%, rgba(11,18,24,0.15) 78%, transparent 100%)",
+                opacity: hovered ? 1 : 0,
+                transform: hovered ? "scale(1) translateY(0px)" : "scale(0.965) translateY(8px)",
+                filter: hovered ? "blur(0px)" : "blur(5px)",
+                willChange: "opacity, transform, filter",
+                transition: "opacity 0.85s cubic-bezier(0.76,0,0.24,1), transform 0.85s cubic-bezier(0.76,0,0.24,1), filter 0.45s cubic-bezier(0.76,0,0.24,1)",
               }}
+              priority
             />
           </motion.div>
 
@@ -71,7 +93,7 @@ export default function Hero() {
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
-            className="flex flex-col"
+            className="flex flex-col order-first lg:order-last"
           >
             <motion.p variants={fadeUp} className="text-eyebrow mb-6">
               Multimedia · Design · Motion
@@ -130,7 +152,7 @@ export default function Hero() {
         <span className="text-[11px] font-body text-white/30 uppercase tracking-widest">
           Scroll
         </span>
-        <div className="w-px h-12 bg-gradient-to-b from-white/20 to-transparent" />
+        <div className="w-px h-12 bg-gradient-to-b from-black/20 dark:from-white/20 to-transparent" />
       </motion.div>
     </section>
   );

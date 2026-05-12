@@ -58,13 +58,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Prevent flash of wrong theme — apply dark class before first paint */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.classList.toggle('dark',t==='dark');})()`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body
-        className={`${urbanist.variable} ${inter.variable} antialiased bg-bg text-white`}
+        className={`${urbanist.variable} ${inter.variable} antialiased`}
+        style={{ backgroundColor: "var(--bg)", color: "var(--text-primary)" }}
       >
         {children}
       </body>

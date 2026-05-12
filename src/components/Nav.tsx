@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
+import { ThemeSwitch } from "@/components/ui/theme-switch-button";
 
 const navItems = ["About", "Work", "Services", "Experience", "Contact"];
 
@@ -54,7 +55,7 @@ export default function Nav() {
               fontFamily: "Tahoma, 'Trebuchet MS', Arial, sans-serif",
               fontWeight: "bold",
               fontSize: "19px",
-              color: "white",
+              color: "var(--text-primary)",
               letterSpacing: "0.01em",
             }}
           >
@@ -75,8 +76,9 @@ export default function Nav() {
           ))}
         </nav>
 
-        {/* CTA */}
-        <div className="hidden md:flex">
+        {/* CTA + Theme toggle */}
+        <div className="hidden md:flex items-center gap-3">
+          <ThemeSwitch />
           <Button
             href="mailto:jclorete09@gmail.com"
             variant="primary"
@@ -86,23 +88,26 @@ export default function Nav() {
           </Button>
         </div>
 
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden flex flex-col gap-1.5 p-2 text-white"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={menuOpen}
-        >
-          <span
-            className={`block w-5 h-0.5 bg-current transition-transform duration-200 ${menuOpen ? "translate-y-2 rotate-45" : ""}`}
-          />
-          <span
-            className={`block w-5 h-0.5 bg-current transition-opacity duration-200 ${menuOpen ? "opacity-0" : ""}`}
-          />
-          <span
-            className={`block w-5 h-0.5 bg-current transition-transform duration-200 ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`}
-          />
-        </button>
+        {/* Mobile: theme toggle + hamburger */}
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeSwitch />
+          <button
+            className="flex flex-col gap-1.5 p-2 text-white"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+          >
+            <span
+              className={`block w-5 h-0.5 bg-current transition-transform duration-200 ${menuOpen ? "translate-y-2 rotate-45" : ""}`}
+            />
+            <span
+              className={`block w-5 h-0.5 bg-current transition-opacity duration-200 ${menuOpen ? "opacity-0" : ""}`}
+            />
+            <span
+              className={`block w-5 h-0.5 bg-current transition-transform duration-200 ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`}
+            />
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}

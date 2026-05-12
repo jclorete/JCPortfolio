@@ -27,9 +27,9 @@ export const LampEffect = ({ className }: { className?: string }) => {
             [--conic-position:from_70deg_at_center_top]"
         >
           <div className="absolute w-full left-0 h-36 bottom-0 z-20"
-            style={{ background: "linear-gradient(to top, #0B1218, transparent)" }} />
+            style={{ background: "linear-gradient(to top, var(--bg), transparent)" }} />
           <div className="absolute w-36 h-full left-0 bottom-0 z-20"
-            style={{ background: "linear-gradient(to right, #0B1218, transparent)" }} />
+            style={{ background: "linear-gradient(to right, var(--bg), transparent)" }} />
         </motion.div>
 
         {/* Right beam */}
@@ -45,14 +45,14 @@ export const LampEffect = ({ className }: { className?: string }) => {
             [--conic-position:from_290deg_at_center_top]"
         >
           <div className="absolute w-36 h-full right-0 bottom-0 z-20"
-            style={{ background: "linear-gradient(to left, #0B1218, transparent)" }} />
+            style={{ background: "linear-gradient(to left, var(--bg), transparent)" }} />
           <div className="absolute w-full right-0 h-36 bottom-0 z-20"
-            style={{ background: "linear-gradient(to top, #0B1218, transparent)" }} />
+            style={{ background: "linear-gradient(to top, var(--bg), transparent)" }} />
         </motion.div>
 
         {/* Dark bleed at base */}
         <div className="absolute top-1/2 h-40 w-full translate-y-8 scale-x-150"
-          style={{ background: "#0B1218", filter: "blur(24px)" }} />
+          style={{ background: "var(--bg)", filter: "blur(24px)" }} />
 
         {/* Large glow orb */}
         <div className="absolute inset-auto z-50 h-32 w-[26rem] -translate-y-1/2 rounded-full opacity-40"
@@ -78,7 +78,7 @@ export const LampEffect = ({ className }: { className?: string }) => {
 
         {/* Bottom dark cover */}
         <div className="absolute inset-auto z-40 h-40 w-full -translate-y-48"
-          style={{ background: "#0B1218" }} />
+          style={{ background: "var(--bg)" }} />
       </div>
     </div>
   );

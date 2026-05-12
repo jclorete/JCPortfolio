@@ -2,7 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Light mode */
 :root {
+  --bg: #f5f0eb;
+  --surface-1: #ffffff;
+  --surface-2: #f0ebe4;
+  --surface-elevated: #e8e2da;
+  --border: rgba(0, 0, 0, 0.07);
+  --border-strong: rgba(0, 0, 0, 0.12);
+  --text-primary: #1a1008;
+  --text-muted: rgba(26, 16, 8, 0.6);
+  --text-subtle: rgba(26, 16, 8, 0.45);
+  --accent: #e07a2f;
+  --accent-glow: rgba(224, 122, 47, 0.2);
+  --accent-tint: rgba(224, 122, 47, 0.1);
+}
+
+/* Dark mode */
+.dark {
   --bg: #0b1218;
   --surface-1: #111111;
   --surface-2: #1a1a1a;
@@ -22,11 +39,12 @@ html {
 }
 
 body {
-  background-color: #0b1218;
-  color: #ffffff;
+  background-color: var(--bg);
+  color: var(--text-primary);
   font-family: var(--font-inter), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Scrollbar */
@@ -34,7 +52,7 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b1218;
+  background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.12);
@@ -98,6 +116,72 @@ body {
       0 20px 60px -20px rgba(224, 122, 47, 0.35);
   }
 }
+
+/* ── Theme transition ────────────────────────────────────────────────────── */
+
+/* View Transitions API (Chrome/Edge/Safari 18+): smooth crossfade */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.45s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  mix-blend-mode: normal;
+}
+
+/* Fallback for Firefox / older Safari: CSS transition class */
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease,
+    border-color 0.4s ease,
+    fill 0.4s ease,
+    box-shadow 0.4s ease !important;
+}
+
+/* ── Light-mode overrides ─────────────────────────────────
+   These kick in when html does NOT have the .dark class.
+   They remap Tailwind's white/surface utilities to dark equivalents
+   so every component stays readable without touching each file.
+───────────────────────────────────────────────────────── */
+html:not(.dark) .text-white          { color: var(--text-primary); }
+html:not(.dark) .text-white\/80      { color: rgba(26,16,8,0.8); }
+html:not(.dark) .text-white\/70      { color: rgba(26,16,8,0.7); }
+html:not(.dark) .text-white\/60      { color: rgba(26,16,8,0.6); }
+html:not(.dark) .text-white\/55      { color: rgba(26,16,8,0.55); }
+html:not(.dark) .text-white\/50      { color: rgba(26,16,8,0.5); }
+html:not(.dark) .text-white\/45      { color: rgba(26,16,8,0.45); }
+html:not(.dark) .text-white\/40      { color: rgba(26,16,8,0.4); }
+html:not(.dark) .text-white\/35      { color: rgba(26,16,8,0.35); }
+html:not(.dark) .text-white\/30      { color: rgba(26,16,8,0.3); }
+html:not(.dark) .text-white\/25      { color: rgba(26,16,8,0.25); }
+html:not(.dark) .text-white\/20      { color: rgba(26,16,8,0.2); }
+html:not(.dark) .text-white\/15      { color: rgba(26,16,8,0.15); }
+html:not(.dark) .hover\:text-white:hover { color: var(--text-primary); }
+
+html:not(.dark) .fill-white          { fill: var(--text-primary); }
+html:not(.dark) .fill-white\/30      { fill: rgba(26,16,8,0.3); }
+
+html:not(.dark) .bg-bg               { background-color: var(--bg); }
+html:not(.dark) .bg-bg\/90           { background-color: rgba(245,240,235,0.92); }
+html:not(.dark) .bg-surface1         { background-color: var(--surface-1); }
+html:not(.dark) .bg-surface2         { background-color: var(--surface-2); }
+html:not(.dark) .bg-surface-elevated { background-color: var(--surface-elevated); }
+html:not(.dark) .bg-white\/5         { background-color: rgba(26,16,8,0.05); }
+html:not(.dark) .bg-white\/10        { background-color: rgba(26,16,8,0.08); }
+html:not(.dark) .bg-white\/15        { background-color: rgba(26,16,8,0.1); }
+html:not(.dark) .bg-white\/25        { background-color: rgba(26,16,8,0.15); }
+html:not(.dark) .bg-black\/50        { background-color: rgba(245,240,235,0.5); }
+html:not(.dark) .bg-black\/85        { background-color: rgba(245,240,235,0.85); }
+
+html:not(.dark) .border-white\/5     { border-color: var(--border); }
+html:not(.dark) .border-white\/10    { border-color: var(--border); }
+html:not(.dark) .border-white\/15    { border-color: var(--border-strong); }
+html:not(.dark) .border-white\/25    { border-color: rgba(26,16,8,0.25); }
+html:not(.dark) .border-white\/40    { border-color: rgba(26,16,8,0.4); }
+html:not(.dark) .hover\:border-white\/40:hover { border-color: rgba(26,16,8,0.4); }
+
+html:not(.dark) .section-divider     { border-color: var(--border); }
 
 @media (prefers-reduced-motion: reduce) {
   *,

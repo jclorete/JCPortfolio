@@ -44,7 +44,11 @@ export default function About() {
               <motion.div
                 key={h.value}
                 variants={fadeUp}
-                className="bg-surface1 border border-white/5 rounded-lg p-5 flex flex-col gap-1 shadow-card"
+                className="relative rounded-lg p-5 flex flex-col gap-1 overflow-hidden backdrop-blur-md border border-white/10"
+                style={{
+                  background: "rgba(255,255,255,0.05)",
+                  boxShadow: "0 4px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.08)",
+                }}
               >
                 <span className="font-display font-bold text-xl text-white">
                   {h.value}

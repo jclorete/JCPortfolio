@@ -107,8 +107,8 @@ export const experience = [
 ] as const;
 
 export const stats = [
-  { value: "7+", label: "Years across design, video & motion" },
+  { value: "4+", label: "Years across design, video & motion" },
   { value: "40+", label: "Featured projects" },
-  { value: "5", label: "Companies & agencies served" },
+  { value: "7", label: "Companies & agencies served" },
   { value: "24h", label: "Typical turnaround" },
 ] as const;
