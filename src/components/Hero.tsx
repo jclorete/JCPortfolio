@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 import Button from "@/components/ui/Button";
+import { BackgroundPaths } from "@/components/ui/background-paths";
 
 
 export default function Hero() {
@@ -13,6 +14,9 @@ export default function Hero() {
       className="relative min-h-screen flex items-center overflow-hidden"
       aria-label="Hero"
     >
+      {/* Animated SVG path background */}
+      <BackgroundPaths />
+
       {/* Ambient glow behind photo */}
       <div
         className="pointer-events-none absolute inset-0"
