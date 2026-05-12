@@ -99,10 +99,14 @@ export default function Hero() {
           className="absolute inset-y-0 right-0 w-52 z-10"
           style={{ background: "linear-gradient(to left, #0B1218 0%, transparent 100%)" }}
         />
-        {/* Bottom fade */}
+        {/* Bottom fade — tall multi-stop gradient for smooth dissolve */}
         <div
-          className="absolute bottom-0 left-0 right-0 h-32 z-10"
-          style={{ background: "linear-gradient(to top, #0B1218 0%, transparent 100%)" }}
+          className="absolute bottom-0 left-0 right-0 z-10"
+          style={{
+            height: "45%",
+            background:
+              "linear-gradient(to top, #0B1218 0%, #0B1218 18%, rgba(11,18,24,0.85) 38%, rgba(11,18,24,0.5) 58%, rgba(11,18,24,0.15) 78%, transparent 100%)",
+          }}
         />
 
         <Image
