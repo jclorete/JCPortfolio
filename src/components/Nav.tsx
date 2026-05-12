@@ -47,10 +47,6 @@ export default function Nav() {
                 alt="JC logo mark"
                 fill
                 className="object-contain"
-                style={{
-                  filter:
-                    "brightness(0) invert(53%) sepia(82%) saturate(465%) hue-rotate(349deg) brightness(98%) contrast(91%)",
-                }}
               />
             </div>
           </div>

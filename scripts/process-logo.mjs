@@ -1,24 +1,25 @@
-import { removeBackground } from "@imgly/background-removal-node";
 import sharp from "sharp";
-import fs from "fs";
 
-const INPUT  = "/Users/jaycie/Desktop/FOR PORTFOLIO/JC PORTFOLIO/public/assets/logo.jpg";
+const INPUT  = "/Users/jaycie/Desktop/FOR PORTFOLIO/JC PORTFOLIO/public/assets/logo.png";
 const OUTPUT = "/Users/jaycie/Desktop/FOR PORTFOLIO/JC PORTFOLIO/public/assets/logo-icon.png";
 
-console.log("Removing background...");
-const blob   = await removeBackground(INPUT);
-const buffer = Buffer.from(await blob.arrayBuffer());
+const { data, info } = await sharp(INPUT)
+  .ensureAlpha()
+  .raw()
+  .toBuffer({ resolveWithObject: true });
 
-// Get dimensions so we can crop the text off the bottom
-const meta = await sharp(buffer).metadata();
-const { width, height } = meta;
+const { width, height, channels } = info;
 
-// The icon mark occupies roughly the top 68% — crop the "JAYCIE DESIGN" text away
-const cropHeight = Math.round(height * 0.68);
+// Replace near-white pixels with transparent
+for (let i = 0; i < data.length; i += channels) {
+  const r = data[i], g = data[i + 1], b = data[i + 2];
+  if (r > 230 && g > 230 && b > 230) {
+    data[i + 3] = 0; // transparent
+  }
+}
 
-await sharp(buffer)
-  .extract({ left: 0, top: 0, width, height: cropHeight })
+await sharp(data, { raw: { width, height, channels } })
   .png()
   .toFile(OUTPUT);
 
-console.log(`Done → ${OUTPUT}  (${width}×${cropHeight})`);
+console.log(`Done → ${OUTPUT}`);
