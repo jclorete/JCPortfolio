@@ -5,6 +5,7 @@ import Image from "next/image";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 import Button from "@/components/ui/Button";
 import { BackgroundPaths } from "@/components/ui/background-paths";
+import { LampEffect } from "@/components/ui/lamp";
 
 export default function Hero() {
   return (
@@ -15,6 +16,9 @@ export default function Hero() {
     >
       {/* Animated SVG path background */}
       <BackgroundPaths />
+
+      {/* Lamp light beam from top */}
+      <LampEffect />
 
       {/* Ambient glow — centered behind photo */}
       <div
