@@ -81,33 +81,33 @@ export default function Hero() {
               }}
               priority
             />
-            {/* Dark mode hover — rises up on hover */}
+            {/* Hover photo for both modes — rises up on hover */}
             <Image
               src="/assets/photo2-sized.png"
               alt="Jaycie"
               fill
               className="object-contain object-bottom"
               style={{
-                opacity: isDark && hovered ? 1 : 0,
-                transform: isDark && hovered ? "translateY(0px) scale(1)" : "translateY(35px) scale(0.99)",
-                filter: isDark && hovered ? "blur(0px)" : "blur(6px)",
+                opacity: hovered ? 1 : 0,
+                transform: hovered ? "translateY(0px) scale(1)" : "translateY(35px) scale(0.99)",
+                filter: hovered ? "blur(0px)" : "blur(6px)",
                 willChange: "opacity, transform, filter",
                 transition: "opacity 0.9s cubic-bezier(0.76,0,0.24,1), transform 0.9s cubic-bezier(0.76,0,0.24,1), filter 0.4s cubic-bezier(0.76,0,0.24,1) 0.15s",
               }}
               priority
             />
-            {/* Light mode photo — fades in from below when theme switches */}
+            {/* Light mode default — exits on theme switch or hover */}
             <Image
               src="/assets/photo3-sized.png"
               alt="Jaycie"
               fill
               className="object-contain object-bottom"
               style={{
-                opacity: isDark ? 0 : 1,
-                transform: isDark ? "translateY(30px) scale(0.98)" : "translateY(0px) scale(1)",
-                filter: isDark ? "blur(6px)" : "blur(0px)",
+                opacity: isDark || hovered ? 0 : 1,
+                transform: (isDark || hovered) ? "translateY(-40px) scale(1.02)" : "translateY(0px) scale(1)",
+                filter: (isDark || hovered) ? "blur(6px)" : "blur(0px)",
                 willChange: "opacity, transform, filter",
-                transition: "opacity 1s cubic-bezier(0.76,0,0.24,1), transform 1s cubic-bezier(0.76,0,0.24,1), filter 0.5s cubic-bezier(0.76,0,0.24,1) 0.1s",
+                transition: "opacity 0.9s cubic-bezier(0.76,0,0.24,1), transform 0.9s cubic-bezier(0.76,0,0.24,1), filter 0.4s cubic-bezier(0.76,0,0.24,1) 0.1s",
               }}
             />
           </motion.div>
