@@ -64,14 +64,14 @@ export default function Hero() {
               className="object-contain object-bottom"
               style={{
                 opacity: hovered ? 0 : 1,
-                transform: hovered ? "scale(1.035) translateY(-8px)" : "scale(1) translateY(0px)",
+                transform: hovered ? "scale(1.03)" : "scale(1)",
                 filter: hovered ? "blur(5px)" : "blur(0px)",
                 willChange: "opacity, transform, filter",
                 transition: "opacity 0.85s cubic-bezier(0.76,0,0.24,1), transform 0.85s cubic-bezier(0.76,0,0.24,1), filter 0.45s cubic-bezier(0.76,0,0.24,1)",
               }}
               priority
             />
-            {/* Hover photo — same canvas size, preloaded */}
+            {/* Hover photo — trimmed & resized to match Untitled-3 exactly */}
             <Image
               src="/assets/photo2-sized.png"
               alt="Jaycie"
@@ -79,7 +79,7 @@ export default function Hero() {
               className="object-contain object-bottom"
               style={{
                 opacity: hovered ? 1 : 0,
-                transform: hovered ? "scale(1) translateY(0px)" : "scale(0.965) translateY(8px)",
+                transform: hovered ? "scale(1)" : "scale(0.97)",
                 filter: hovered ? "blur(0px)" : "blur(5px)",
                 willChange: "opacity, transform, filter",
                 transition: "opacity 0.85s cubic-bezier(0.76,0,0.24,1), transform 0.85s cubic-bezier(0.76,0,0.24,1), filter 0.45s cubic-bezier(0.76,0,0.24,1)",
