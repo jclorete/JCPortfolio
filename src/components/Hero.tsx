@@ -56,7 +56,7 @@ export default function Hero() {
             onTouchEnd={() => setHovered(false)}
             aria-hidden="true"
           >
-            {/* Default photo */}
+            {/* Default photo — drifts upward as it exits (head lifting) */}
             <Image
               src="/assets/Untitled-3.png"
               alt="Jaycie"
@@ -64,14 +64,20 @@ export default function Hero() {
               className="object-contain object-bottom"
               style={{
                 opacity: hovered ? 0 : 1,
-                transform: hovered ? "scale(1.03)" : "scale(1)",
-                filter: hovered ? "blur(5px)" : "blur(0px)",
+                transform: hovered
+                  ? "translateY(-40px) scale(1.02)"
+                  : "translateY(0px) scale(1)",
+                filter: hovered ? "blur(6px)" : "blur(0px)",
                 willChange: "opacity, transform, filter",
-                transition: "opacity 0.85s cubic-bezier(0.76,0,0.24,1), transform 0.85s cubic-bezier(0.76,0,0.24,1), filter 0.45s cubic-bezier(0.76,0,0.24,1)",
+                transition: [
+                  "opacity 0.9s cubic-bezier(0.76,0,0.24,1)",
+                  "transform 0.9s cubic-bezier(0.76,0,0.24,1)",
+                  "filter 0.4s cubic-bezier(0.76,0,0.24,1) 0.1s",
+                ].join(", "),
               }}
               priority
             />
-            {/* Hover photo — trimmed & resized to match Untitled-3 exactly */}
+            {/* Hover photo — rises up into position (head settling after lift) */}
             <Image
               src="/assets/photo2-sized.png"
               alt="Jaycie"
@@ -79,10 +85,16 @@ export default function Hero() {
               className="object-contain object-bottom"
               style={{
                 opacity: hovered ? 1 : 0,
-                transform: hovered ? "scale(1)" : "scale(0.97)",
-                filter: hovered ? "blur(0px)" : "blur(5px)",
+                transform: hovered
+                  ? "translateY(0px) scale(1)"
+                  : "translateY(35px) scale(0.99)",
+                filter: hovered ? "blur(0px)" : "blur(6px)",
                 willChange: "opacity, transform, filter",
-                transition: "opacity 0.85s cubic-bezier(0.76,0,0.24,1), transform 0.85s cubic-bezier(0.76,0,0.24,1), filter 0.45s cubic-bezier(0.76,0,0.24,1)",
+                transition: [
+                  "opacity 0.9s cubic-bezier(0.76,0,0.24,1)",
+                  "transform 0.9s cubic-bezier(0.76,0,0.24,1)",
+                  "filter 0.4s cubic-bezier(0.76,0,0.24,1) 0.15s",
+                ].join(", "),
               }}
               priority
             />
