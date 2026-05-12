@@ -6,7 +6,6 @@ import { fadeUp, staggerContainer } from "@/lib/motion";
 import Button from "@/components/ui/Button";
 import { BackgroundPaths } from "@/components/ui/background-paths";
 
-
 export default function Hero() {
   return (
     <section
@@ -17,61 +16,58 @@ export default function Hero() {
       {/* Animated SVG path background */}
       <BackgroundPaths />
 
-      {/* Ambient glow behind photo */}
+      {/* Ambient glow — centered behind photo */}
       <div
         className="pointer-events-none absolute inset-0"
         aria-hidden="true"
         style={{
           background:
-            "radial-gradient(ellipse 55% 70% at 24% 55%, rgba(224,122,47,0.18) 0%, transparent 68%)",
+            "radial-gradient(ellipse 45% 70% at 28% 55%, rgba(224,122,47,0.18) 0%, transparent 68%)",
         }}
       />
 
-      {/* Portrait — left side, full height */}
-      <motion.div
-        initial={{ opacity: 0, x: -80 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.3, duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute left-0 bottom-0 top-0 hidden lg:block pointer-events-none select-none"
-        style={{ width: "48%" }}
-        aria-hidden="true"
-      >
-        {/* Right-edge fade */}
-        <div
-          className="absolute inset-y-0 right-0 w-52 z-10"
-          style={{ background: "linear-gradient(to left, #0B1218 0%, transparent 100%)" }}
-        />
-        {/* Bottom fade — tall multi-stop gradient for smooth dissolve */}
-        <div
-          className="absolute bottom-0 left-0 right-0 z-10"
-          style={{
-            height: "45%",
-            background:
-              "linear-gradient(to top, #0B1218 0%, #0B1218 18%, rgba(11,18,24,0.85) 38%, rgba(11,18,24,0.5) 58%, rgba(11,18,24,0.15) 78%, transparent 100%)",
-          }}
-        />
+      {/* Centered 2-column layout */}
+      <div className="relative z-10 w-full max-w-layout mx-auto px-8 pt-24 pb-16">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-10 items-center">
 
-        <Image
-          src="/assets/jaycie.png"
-          alt="Jaycie"
-          fill
-          className="object-contain object-center"
-          priority
-        />
+          {/* Left — Photo */}
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3, duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+            className="relative hidden lg:block pointer-events-none select-none"
+            style={{ height: "78vh", maxHeight: "680px" }}
+            aria-hidden="true"
+          >
+            <Image
+              src="/assets/jaycie.png"
+              alt="Jaycie"
+              fill
+              className="object-contain object-bottom"
+              priority
+            />
+            {/* Right-edge fade */}
+            <div
+              className="absolute inset-y-0 right-0 w-24 z-10"
+              style={{ background: "linear-gradient(to left, #0B1218 0%, transparent 100%)" }}
+            />
+            {/* Bottom fade */}
+            <div
+              className="absolute bottom-0 left-0 right-0 z-10"
+              style={{
+                height: "40%",
+                background:
+                  "linear-gradient(to top, #0B1218 0%, #0B1218 15%, rgba(11,18,24,0.85) 35%, rgba(11,18,24,0.5) 55%, rgba(11,18,24,0.15) 78%, transparent 100%)",
+              }}
+            />
+          </motion.div>
 
-      </motion.div>
-
-      {/* Text — right side */}
-      <div className="relative z-10 w-full max-w-layout mx-auto px-6 pt-32 pb-20">
-        <div className="flex">
-          {/* Spacer — matches photo width + breathing room */}
-          <div className="hidden lg:block w-[50%] flex-shrink-0" />
-
+          {/* Right — Text */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
-            className="lg:pl-12 max-w-lg"
+            className="flex flex-col"
           >
             <motion.p variants={fadeUp} className="text-eyebrow mb-6">
               Multimedia · Design · Motion
@@ -115,6 +111,7 @@ export default function Hero() {
               </a>
             </motion.div>
           </motion.div>
+
         </div>
       </div>
 
