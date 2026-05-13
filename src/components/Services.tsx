@@ -33,6 +33,7 @@ export default function Services() {
               <motion.div
                 key={s.n}
                 variants={fadeUp}
+                whileHover={{ y: -4, transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] } }}
                 className="bg-bg p-8 flex flex-col gap-4 group hover:bg-surface1 transition-colors duration-200"
               >
                 <span className="text-eyebrow text-white/20 group-hover:text-accent transition-colors">

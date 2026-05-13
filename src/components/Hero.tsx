@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 import Button from "@/components/ui/Button";
@@ -11,6 +11,10 @@ import { LampEffect } from "@/components/ui/lamp";
 export default function Hero() {
   const [hovered, setHovered] = useState(false);
   const [isDark, setIsDark] = useState(true);
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollY } = useScroll();
+  const textY = useTransform(scrollY, [0, 600], [0, -60]);
+  const photoY = useTransform(scrollY, [0, 600], [0, -30]);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -24,6 +28,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
+      ref={sectionRef}
       className="relative min-h-screen flex items-center overflow-hidden"
       aria-label="Hero"
     >
@@ -52,7 +57,11 @@ export default function Hero() {
             initial={{ opacity: 0, x: -60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+            style={{ y: photoY }}
             className="relative order-last lg:order-first select-none cursor-pointer"
+          >
+          <div
+            className="relative"
             style={{
               height: "clamp(320px, 60vw, 680px)",
               maskImage: "linear-gradient(to right, transparent 0%, black 12%, black 72%, transparent 100%), linear-gradient(to top, transparent 0%, black 22%, black 100%)",
@@ -109,6 +118,7 @@ export default function Hero() {
                 transition: "opacity 0.75s cubic-bezier(0.4,0,0.2,1), transform 0.9s cubic-bezier(0.4,0,0.2,1)",
               }}
             />
+          </div>
           </motion.div>
 
           {/* Right — Text */}
@@ -116,6 +126,7 @@ export default function Hero() {
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
+            style={{ y: textY }}
             className="flex flex-col order-first lg:order-last"
           >
             <motion.p variants={fadeUp} className="text-eyebrow mb-6">
