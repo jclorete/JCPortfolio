@@ -73,40 +73,36 @@ export default function Hero() {
               fill
               className="object-contain object-bottom"
               style={{
-                opacity: !isDark ? 0 : hovered ? 0 : 1,
+                opacity: isDark && !hovered ? 1 : 0,
                 transform: (!isDark || hovered) ? "translateY(-18px) scale(1.02)" : "translateY(0px) scale(1)",
                 willChange: "opacity, transform",
                 transition: "opacity 0.75s cubic-bezier(0.4,0,0.2,1), transform 0.9s cubic-bezier(0.4,0,0.2,1)",
               }}
               priority
             />
-            {/* Hover photo */}
+            {/* Hover photo — dark mode only */}
             <Image
               src="/assets/photo2-sized.png"
               alt="Jaycie"
               fill
               className="object-contain object-bottom"
               style={{
-                opacity: hovered ? 1 : 0,
-                transform: hovered ? "translateY(0px) scale(1)" : "translateY(18px) scale(0.99)",
+                opacity: isDark && hovered ? 1 : 0,
+                transform: isDark && hovered ? "translateY(0px) scale(1)" : "translateY(18px) scale(0.99)",
                 willChange: "opacity, transform",
                 transition: "opacity 0.75s cubic-bezier(0.4,0,0.2,1), transform 0.9s cubic-bezier(0.4,0,0.2,1)",
               }}
               priority
             />
-            {/* Light mode default */}
+            {/* Light mode — static, no hover swap */}
             <Image
               src="/assets/photo3-sized.png"
               alt="Jaycie"
               fill
               className="object-contain object-bottom"
               style={{
-                opacity: isDark || hovered ? 0 : 1,
-                transform: hovered
-                  ? "translateY(-18px) scale(1.02)"
-                  : isDark
-                  ? "translateY(18px) scale(0.99)"
-                  : "translateY(0px) scale(1)",
+                opacity: isDark ? 0 : 1,
+                transform: isDark ? "translateY(18px) scale(0.99)" : "translateY(0px) scale(1)",
                 willChange: "opacity, transform",
                 transition: "opacity 0.75s cubic-bezier(0.4,0,0.2,1), transform 0.9s cubic-bezier(0.4,0,0.2,1)",
               }}
