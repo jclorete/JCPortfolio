@@ -14,7 +14,7 @@ export interface ProjectCategory {
 
 export const projectCategories: Record<string, ProjectCategory> = {
   ads: {
-    label: "Ads",
+    label: "Short-form",
     aspect: "9:16",
     items: [
       { id: "ad-01", title: "Ad Cut 01", drive_id: "1xDvs5W6TGn4AldrZnhNQriT2IjyALALG" },
@@ -33,7 +33,7 @@ export const projectCategories: Record<string, ProjectCategory> = {
     ],
   },
   short_form: {
-    label: "Short-form",
+    label: "Ads",
     aspect: "9:16",
     items: [
       { id: "sf-01", title: "Short-form Reel 01", drive_id: "1q5OaWXbmaLRaIXnZxXEj6_tWCINydnTa" },

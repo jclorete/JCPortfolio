@@ -25,9 +25,9 @@ const OFFSETS = [
 
 function CategoryCarousel({ categoryKey }: { categoryKey: string }) {
   const cat = categoryKey === "All"
-    ? projectCategories["ads"]
+    ? projectCategories["short_form"]
     : Object.values(projectCategories).find((c) => c.label === categoryKey)
-      ?? projectCategories["ads"];
+      ?? projectCategories["short_form"];
 
   const videos = cat.items;
   const isPortrait  = cat.aspect === "9:16";
