@@ -124,8 +124,8 @@ export function getFlatProjects(): FlatProject[] {
 
 export const categoryChips = [
   "All",
-  "Ads",
   "Short-form",
+  "Ads",
   "Long-form",
   "Shot & Edit",
   "Product",
