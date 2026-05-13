@@ -66,7 +66,7 @@ export default function Hero() {
             onTouchEnd={() => setHovered(false)}
             aria-hidden="true"
           >
-            {/* Dark mode default — drifts up and out on hover or theme switch */}
+            {/* Dark mode default */}
             <Image
               src="/assets/Untitled-3.png"
               alt="Jaycie"
@@ -74,14 +74,13 @@ export default function Hero() {
               className="object-contain object-bottom"
               style={{
                 opacity: !isDark ? 0 : hovered ? 0 : 1,
-                transform: (!isDark || hovered) ? "translateY(-80px) scale(1.04)" : "translateY(0px) scale(1)",
-                filter: (!isDark || hovered) ? "blur(6px)" : "blur(0px)",
-                willChange: "opacity, transform, filter",
-                transition: "opacity 0.85s cubic-bezier(0.4,0,0.2,1), transform 1s cubic-bezier(0.4,0,0.2,1), filter 0.65s cubic-bezier(0.4,0,0.2,1)",
+                transform: (!isDark || hovered) ? "translateY(-18px) scale(1.02)" : "translateY(0px) scale(1)",
+                willChange: "opacity, transform",
+                transition: "opacity 0.75s cubic-bezier(0.4,0,0.2,1), transform 0.9s cubic-bezier(0.4,0,0.2,1)",
               }}
               priority
             />
-            {/* Hover photo — rises from below into place */}
+            {/* Hover photo */}
             <Image
               src="/assets/photo2-sized.png"
               alt="Jaycie"
@@ -89,14 +88,13 @@ export default function Hero() {
               className="object-contain object-bottom"
               style={{
                 opacity: hovered ? 1 : 0,
-                transform: hovered ? "translateY(0px) scale(1)" : "translateY(70px) scale(0.97)",
-                filter: hovered ? "blur(0px)" : "blur(6px)",
-                willChange: "opacity, transform, filter",
-                transition: "opacity 0.85s cubic-bezier(0.4,0,0.2,1), transform 1s cubic-bezier(0.4,0,0.2,1), filter 0.65s cubic-bezier(0.4,0,0.2,1)",
+                transform: hovered ? "translateY(0px) scale(1)" : "translateY(18px) scale(0.99)",
+                willChange: "opacity, transform",
+                transition: "opacity 0.75s cubic-bezier(0.4,0,0.2,1), transform 0.9s cubic-bezier(0.4,0,0.2,1)",
               }}
               priority
             />
-            {/* Light mode default — rises from below on theme switch, exits up on hover */}
+            {/* Light mode default */}
             <Image
               src="/assets/photo3-sized.png"
               alt="Jaycie"
@@ -105,13 +103,12 @@ export default function Hero() {
               style={{
                 opacity: isDark || hovered ? 0 : 1,
                 transform: hovered
-                  ? "translateY(-80px) scale(1.04)"
+                  ? "translateY(-18px) scale(1.02)"
                   : isDark
-                  ? "translateY(70px) scale(0.97)"
+                  ? "translateY(18px) scale(0.99)"
                   : "translateY(0px) scale(1)",
-                filter: (isDark || hovered) ? "blur(6px)" : "blur(0px)",
-                willChange: "opacity, transform, filter",
-                transition: "opacity 0.85s cubic-bezier(0.4,0,0.2,1), transform 1s cubic-bezier(0.4,0,0.2,1), filter 0.65s cubic-bezier(0.4,0,0.2,1)",
+                willChange: "opacity, transform",
+                transition: "opacity 0.75s cubic-bezier(0.4,0,0.2,1), transform 0.9s cubic-bezier(0.4,0,0.2,1)",
               }}
             />
           </motion.div>
