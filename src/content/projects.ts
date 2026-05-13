@@ -41,8 +41,8 @@ export const projectCategories: Record<string, ProjectCategory> = {
       { id: "sf-03", title: "Short-form Reel 03", drive_id: "1IgENCIBDse6fLip7Q_ZEMYyxl5apq-RL" },
       { id: "sf-04", title: "Short-form Reel 04", drive_id: "14KznwKu5cuVhQNDd-iSTrKlrk9ioWdtl" },
       { id: "sf-05", title: "Short-form Reel 05", drive_id: "1ZjTcMGbPYcTuTzIvncNuwag0_lPyY5s1" },
-      { id: "sf-06", title: "Short-form Reel 06", drive_id: "1PFhzgRE-9_gXR_Z2PL_0h7QjYm-mGAiW" },
-      { id: "sf-07", title: "Short-form Reel 07", drive_id: "1gNYmU8tkGDF-HL7qGK0uiOGsy4Rzp10o" },
+      { id: "sf-06", title: "Short-form Reel 06", drive_id: "1gNYmU8tkGDF-HL7qGK0uiOGsy4Rzp10o" },
+      { id: "sf-07", title: "Short-form Reel 07", drive_id: "1PFhzgRE-9_gXR_Z2PL_0h7QjYm-mGAiW" },
     ],
   },
   shot_and_edit: {
