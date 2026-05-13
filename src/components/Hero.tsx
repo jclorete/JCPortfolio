@@ -77,7 +77,7 @@ export default function Hero() {
                 transform: (!isDark || hovered) ? "translateY(-80px) scale(1.04)" : "translateY(0px) scale(1)",
                 filter: (!isDark || hovered) ? "blur(6px)" : "blur(0px)",
                 willChange: "opacity, transform, filter",
-                transition: "opacity 1.3s cubic-bezier(0.4,0,0.2,1), transform 1.5s cubic-bezier(0.4,0,0.2,1), filter 1s cubic-bezier(0.4,0,0.2,1)",
+                transition: "opacity 0.85s cubic-bezier(0.4,0,0.2,1), transform 1s cubic-bezier(0.4,0,0.2,1), filter 0.65s cubic-bezier(0.4,0,0.2,1)",
               }}
               priority
             />
@@ -92,7 +92,7 @@ export default function Hero() {
                 transform: hovered ? "translateY(0px) scale(1)" : "translateY(70px) scale(0.97)",
                 filter: hovered ? "blur(0px)" : "blur(6px)",
                 willChange: "opacity, transform, filter",
-                transition: "opacity 1.3s cubic-bezier(0.4,0,0.2,1), transform 1.5s cubic-bezier(0.4,0,0.2,1), filter 1s cubic-bezier(0.4,0,0.2,1)",
+                transition: "opacity 0.85s cubic-bezier(0.4,0,0.2,1), transform 1s cubic-bezier(0.4,0,0.2,1), filter 0.65s cubic-bezier(0.4,0,0.2,1)",
               }}
               priority
             />
@@ -111,7 +111,7 @@ export default function Hero() {
                   : "translateY(0px) scale(1)",
                 filter: (isDark || hovered) ? "blur(6px)" : "blur(0px)",
                 willChange: "opacity, transform, filter",
-                transition: "opacity 1.3s cubic-bezier(0.4,0,0.2,1), transform 1.5s cubic-bezier(0.4,0,0.2,1), filter 1s cubic-bezier(0.4,0,0.2,1)",
+                transition: "opacity 0.85s cubic-bezier(0.4,0,0.2,1), transform 1s cubic-bezier(0.4,0,0.2,1), filter 0.65s cubic-bezier(0.4,0,0.2,1)",
               }}
             />
           </motion.div>
