@@ -66,7 +66,7 @@ export default function Hero() {
             onTouchEnd={() => setHovered(false)}
             aria-hidden="true"
           >
-            {/* Dark mode default — lifts away on hover */}
+            {/* Dark mode default — drifts up and out on hover or theme switch */}
             <Image
               src="/assets/Untitled-3.png"
               alt="Jaycie"
@@ -74,14 +74,14 @@ export default function Hero() {
               className="object-contain object-bottom"
               style={{
                 opacity: !isDark ? 0 : hovered ? 0 : 1,
-                transform: (!isDark || hovered) ? "translateY(-110px) scale(1.06)" : "translateY(0px) scale(1)",
-                filter: (!isDark || hovered) ? "blur(12px)" : "blur(0px)",
+                transform: (!isDark || hovered) ? "translateY(-80px) scale(1.04)" : "translateY(0px) scale(1)",
+                filter: (!isDark || hovered) ? "blur(6px)" : "blur(0px)",
                 willChange: "opacity, transform, filter",
-                transition: "transform 1.1s cubic-bezier(0.22,1,0.36,1), opacity 0.65s cubic-bezier(0.4,0,0.2,1) 0.2s, filter 0.55s ease 0.3s",
+                transition: "opacity 1.3s cubic-bezier(0.4,0,0.2,1), transform 1.5s cubic-bezier(0.4,0,0.2,1), filter 1s cubic-bezier(0.4,0,0.2,1)",
               }}
               priority
             />
-            {/* Hover photo — rises up from below on hover */}
+            {/* Hover photo — rises from below into place */}
             <Image
               src="/assets/photo2-sized.png"
               alt="Jaycie"
@@ -89,14 +89,14 @@ export default function Hero() {
               className="object-contain object-bottom"
               style={{
                 opacity: hovered ? 1 : 0,
-                transform: hovered ? "translateY(0px) scale(1)" : "translateY(90px) scale(0.97)",
-                filter: hovered ? "blur(0px)" : "blur(12px)",
+                transform: hovered ? "translateY(0px) scale(1)" : "translateY(70px) scale(0.97)",
+                filter: hovered ? "blur(0px)" : "blur(6px)",
                 willChange: "opacity, transform, filter",
-                transition: "transform 1.1s cubic-bezier(0.22,1,0.36,1), opacity 0.65s cubic-bezier(0.4,0,0.2,1) 0.15s, filter 0.55s ease 0.25s",
+                transition: "opacity 1.3s cubic-bezier(0.4,0,0.2,1), transform 1.5s cubic-bezier(0.4,0,0.2,1), filter 1s cubic-bezier(0.4,0,0.2,1)",
               }}
               priority
             />
-            {/* Light mode default — lifts away on theme switch or hover */}
+            {/* Light mode default — rises from below on theme switch, exits up on hover */}
             <Image
               src="/assets/photo3-sized.png"
               alt="Jaycie"
@@ -104,10 +104,14 @@ export default function Hero() {
               className="object-contain object-bottom"
               style={{
                 opacity: isDark || hovered ? 0 : 1,
-                transform: (isDark || hovered) ? "translateY(-110px) scale(1.06)" : "translateY(0px) scale(1)",
-                filter: (isDark || hovered) ? "blur(12px)" : "blur(0px)",
+                transform: hovered
+                  ? "translateY(-80px) scale(1.04)"
+                  : isDark
+                  ? "translateY(70px) scale(0.97)"
+                  : "translateY(0px) scale(1)",
+                filter: (isDark || hovered) ? "blur(6px)" : "blur(0px)",
                 willChange: "opacity, transform, filter",
-                transition: "transform 1.1s cubic-bezier(0.22,1,0.36,1), opacity 0.65s cubic-bezier(0.4,0,0.2,1) 0.2s, filter 0.55s ease 0.3s",
+                transition: "opacity 1.3s cubic-bezier(0.4,0,0.2,1), transform 1.5s cubic-bezier(0.4,0,0.2,1), filter 1s cubic-bezier(0.4,0,0.2,1)",
               }}
             />
           </motion.div>
