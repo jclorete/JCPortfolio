@@ -58,7 +58,7 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
             style={{ y: photoY }}
-            className="relative order-last lg:order-first select-none cursor-pointer"
+            className="relative order-first select-none cursor-pointer"
           >
           <div
             className="relative"
@@ -127,7 +127,7 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
             style={{ y: textY }}
-            className="flex flex-col order-first lg:order-last"
+            className="flex flex-col order-last"
           >
             <motion.p variants={fadeUp} className="text-eyebrow mb-6">
               Multimedia · Design · Motion
